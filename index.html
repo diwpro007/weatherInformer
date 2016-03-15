@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="weatherInformer">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Informer</title>
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js "></script>
+    <script src="js/app.js "></script>
+</head>
+
+<body>
+
+    <div class="credit">
+        <p>Designed and developed by <a href="https://github.com/diwpro007">Diwakar Serala</a></p>
+    </div>
+
+    <div class="weather-card" ng-controller="mainCtrl">
+        <div class="current-weather-part">
+            <div class="current-weather-part-info">
+                <p id="current-weather-part-info-location">{{location.city}}, {{location.country}}</p>
+                <p id="current-weather-part-info-summary">{{weather.summary}}</p>
+                <table>
+                    <tr>
+                        <td><i class="info-icon wi wi-strong-wind"></i></td>
+                        <td id="current-weather-part-info-wind-speed">{{weather.windSpeed}} m/s from {{weather.windDir}}</td>
+                    </tr>
+                    <tr>
+                        <td><i class="info-icon wi wi-barometer"></i></td>
+                        <td id="current-weather-part-info-humidity">{{weather.pressure}} hPa</td>
+                    </tr>
+                    <tr>
+                        <td><i class="info-icon wi wi-humidity"></i></td>
+                        <td id="current-weather-part-info-humidity">{{weather.humidity}} %</td>
+                    </tr>
+                </table>
+
+                <p id="current-weather-part-info-temp">{{weather.temperature}}&deg;C</p>
+            </div>
+            <div class="current-weather-part-main-icon ">
+                <i ng-class="weather.icon"></i>
+            </div>
+        </div>
+        <div class="future-forecast ">
+            <ul>
+                <li ng-repeat="forecast in forecasts">
+                    <strong>{{forecast.day}}</strong>
+                    <br> <i ng-class="forecast.conditionClass"></i>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!--
+    <div class="loading-data">
+        loading please wait...
+    </div>
+-->
+</body>
+
+</html>
